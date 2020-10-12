@@ -1,9 +1,11 @@
 def load_fig():
     import json
     import plotly.graph_objects as go
-#     with open("srcdata/fig.json", "r") as f:
-#         fig = go.Figure(json.load(f))
-#     return fig
+    with open("fig.json", "r") as f:
+        fig = go.Figure(json.load(f))
+    return fig
+
+fig = load_fig()
 
 import dash
 import dash_html_components as html
@@ -29,7 +31,7 @@ app.layout = dbc.Container([
         value="RdYlBu_r",
         style={'width': '200px'}
     ),
-    dcc.Graph(id="main-graph", figure=1),
+    dcc.Graph(id="main-graph", figure=fig),
 ])
 
 @app.callback(
@@ -43,4 +45,4 @@ def update_fig(colorscale):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, use_reloader=False)
+    app.run_server(host='0.0.0.0', port = '5000',debug=True, use_reloader=False)
