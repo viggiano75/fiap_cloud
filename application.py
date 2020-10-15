@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-rodadas = np.arange(1,4,1)
+rodadas = np.arange(1,39,1)
 df = pd.DataFrame()
 
 for rodada in rodadas:
